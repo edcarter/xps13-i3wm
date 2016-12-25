@@ -1,3 +1,4 @@
+# based off of:
 # github.com/rafi i3status config
 
 # i3status configuration file
@@ -21,11 +22,7 @@ order += "volume master"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "cpu_temperature 1"
-#order += "cpu_temperature 2"
-#order += "cpu_temperature 3"
 order += "disk /"
-#order += "disk /media/media"
-#order += "ethernet eth0"
 order += "tztime local"
 order += "ipv6"
 #order += "run_watch DHCP"
@@ -66,23 +63,9 @@ disk "/" {
 	format = " %avail:/ " 
 }
 
-disk "/media/media" {
-	format = " ¨ %avail:m "
-}
-
 wireless wlp2s0 {
 	format_up = " W: (%quality at %essid) %ip "
 	format_down = " WiFi Down "
-}
-
-ethernet eth0 {
-	# if you use %speed, i3status requires root privileges
-#	format_up =  " Ω: %ip  "
-#	format_down = " ∅ eth0  "
-
-	# termsyn font
-	format_up =  " ­ %ip "
-	format_down = " Ð eth0 "
 }
 
 run_watch DHCP {
