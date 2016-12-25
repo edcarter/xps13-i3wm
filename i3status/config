@@ -1,0 +1,111 @@
+# github.com/rafi i3status config
+
+# i3status configuration file
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+	colors = true
+	color_good = "#70ff96"
+	color_bad = "#ff7272"
+	color_degraded = "#ffe772"
+	interval = 2
+}
+
+order += "volume master"
+#order += "load"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
+#order += "cpu_temperature 2"
+#order += "cpu_temperature 3"
+order += "disk /"
+#order += "disk /media/media"
+#order += "ethernet eth0"
+order += "tztime local"
+order += "ipv6"
+#order += "run_watch DHCP"
+#order += "run_watch VPN"
+order += "wireless wlp2s0"
+order += "battery 0"
+
+volume master {
+	format = " ♪: %volume " 
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+load {
+#	format = " Δ: %1min "
+	# termsyn font
+	format = " Load: %1min"
+}
+
+cpu_usage {
+	format = " CPU: %usage "
+}
+
+cpu_temperature 0 {
+	format = " %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp2_input"
+	max_threshold = 70
+}
+
+cpu_temperature 1 {
+	format = " %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp3_input"
+	max_threshold = 70
+}
+
+disk "/" {
+	format = " %avail:/ " 
+}
+
+disk "/media/media" {
+	format = " ¨ %avail:m "
+}
+
+wireless wlp2s0 {
+	format_up = " W: (%quality at %essid) %ip "
+	format_down = " WiFi Down "
+}
+
+ethernet eth0 {
+	# if you use %speed, i3status requires root privileges
+#	format_up =  " Ω: %ip  "
+#	format_down = " ∅ eth0  "
+
+	# termsyn font
+	format_up =  " ­ %ip "
+	format_down = " Ð eth0 "
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+	pidfile = "/var/run/vpnc/pid"
+}
+
+tztime local {
+#	format = " %h-%d %H:%M ☰ "
+	# termsyn font
+	format = " %h-%d %H:%M "
+}
+
+battery 0 {
+	format = "%status %remaining (%consumption)"
+	format_down = "No battery"
+	status_chr = "⚇ CHR"
+	status_bat = "⚡ BAT"
+	status_full = "☻ FULL"
+	low_threshold = 30
+	threshold_type = "time"
+	path = "/sys/class/power_supply/BAT0/uevent"
+}
