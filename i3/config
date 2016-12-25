@@ -178,7 +178,7 @@ bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
 
-# Sreen brightness controls
+# Sreen brightness controls, you need to install xbacklight
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
@@ -196,4 +196,5 @@ bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 #######################################################################
 exec --no-startup-id xrandr --dpi 192
 exec i3-config-wizard
+#replace yosemite-4.jpg with background picture you want to use
 exec --no-startup-id feh --bg-scale ~/Pictures/yosemite-4.jpg
